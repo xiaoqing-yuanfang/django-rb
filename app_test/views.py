@@ -1,18 +1,23 @@
+# -*- coding:utf-8 -*-
 # Create your views here.
-from django.http import HttpResponse
-from django.http import HttpResponseNotFound
-from django.shortcuts import redirect
-from models import students
 from reportlab.pdfgen import canvas
+
+from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.shortcuts import render_to_response
+
+from models import students
+
 
 def just_test(request):
     record = students.objects.get(stu_id=1)
-    if(record == None):
+    if (record == None):
         print(" record empty")
     else:
         print(record)
-    #import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
     from django.core.mail import send_mail
+
     send_mail("subject", "nihao", "gcy3y@163.com", ["gcy3y@163.com"])
     return redirect(record)
 
@@ -33,3 +38,14 @@ def pdf_view(request):
     p.showPage()
     p.save()
     return response
+
+
+def helloword(request):
+    return render_to_response("app_test/app_test.html")
+
+
+def rb(request):
+    items = []
+    for i in range(1000):
+        items.append(i)
+    return render_to_response("app_test/app_test.html", {"items": items, })

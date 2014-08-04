@@ -1,4 +1,11 @@
-from app_test.lib import predict
+# -*- coding:utf-8 -*-
+import os
+import sys
+
+new_lib = os.path.join(os.path.dirname("__file__"), "../")
+sys.path.append(new_lib)
+print(sys.path)
+
 from app_test.lib import guilv1
 from app_test.lib import search
 from app_test.lib import sqlite3_op

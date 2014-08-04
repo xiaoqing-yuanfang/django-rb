@@ -1,7 +1,10 @@
-from app_test.lib import get_rb_data
-from app_test.lib import sqlite3_op
+# -*- coding:utf-8 -*-
 import os
 import time
+
+from app_test.lib import get_rb_data
+from app_test.lib import sqlite3_op
+
 
 def init_database(default_dbname="rb.sqlite3"):
     flag = sqlite3_op.create_table_rb("rb")
