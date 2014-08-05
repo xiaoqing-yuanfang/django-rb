@@ -38,6 +38,10 @@ def newest_phase_in_database(database_name="rb.sqlite3",table_name="rb"):
     result = result_cur.fetchone()
     return int(result[0]) 
 def update_database(database_name="rb.sqlite3"):
+    """
+
+    :rtype : object
+    """
     cur_year = int(time.asctime().split()[4])        
     newest_in_database = newest_phase_in_database()
     tmp = get_rb_data.search_rb_items(cur_year)

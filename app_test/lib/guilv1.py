@@ -3,7 +3,7 @@ from app_test.lib import search
 from app_test.lib import sqlite3_op
 import os
 import math
-debug = True 
+debug = False
 def guilv1_red_create_table(table_name="guilv1_red",lianxu_n = 2):
     ''' 
         succ return True
@@ -186,28 +186,29 @@ def get_redballs_comply_stat_min_max(lianxu_n=2):
     d = dict()
     for i in range(1,34):
         d[i] = stat_guilv1.get_min_max_rate_red(red_ball=i,lianxu_n=lianxu_n)
-    if(debug == True):
-        print("min and max")
-        print(d)
+
     ##
     # get top lianxu_n-1 items form database
     ##
-    p_from,p_to,p_len = search.from_and_to(table_name="rb")
-    all_items = search.search_3(periods_from=p_from,periods_to=p_to,table_name="rb") 
-    top_lianxu_n_reds = search.get_red_2(buf=all_items)     
-    rate  = guilv1_get_red_rate_lianxu_n(top_lianxu_n_reds[:lianxu_n-1],lianxu_n=lianxu_n-1)
-    print("top n-1 rate:",rate)
-    
+    ###
+    #p_from,p_to,p_len = search.from_and_to(table_name="rb")
+    #all_items = search.search_3(periods_from=p_from,periods_to=p_to,table_name="rb")
+    #top_lianxu_n_reds = search.get_red_2(buf=all_items)
+    #rate  = guilv1_get_red_rate_lianxu_n(top_lianxu_n_reds[:lianxu_n-1],lianxu_n=lianxu_n-1)
+    rate = search.get_redrate_lianxu_n_id(lianxun=lianxu_n-1,id=1)
     if(len(rate) != 1):
         print("result get error")
         exit(1)
     rate = rate[0]
-    for i in range(2):
+    rate = list(rate)
+    for i in range(1):
         rate.pop(0)
     r = []
-    for i in range(33):
-        if((rate[i]+1) >= d[i+1][0] and rate[i]+1 <= d[i+1][1]):
-            r.append(i+1)
+    for i in range(1,34):
+        if(debug==True):
+            print(i,":",rate[i],d[i][0],d[i][1])
+        if((rate[i]+1) >= d[i][0] and rate[i]+1 <= d[i][1]):
+            r.append(i)
     return r
 
 if __name__ == "__main__":

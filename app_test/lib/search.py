@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from app_test.lib import tools
+#from app_test.lib import tools
 
 def from_and_to(table_name="rb"):
     ''' 
@@ -319,9 +319,66 @@ def get_blue_2(buf=None,n=None,start=None,end=None):
         item = list(item)
         r.append(item.pop())
     return r
-    
-        
-    
+def get_redrate_lianxu_n(lianxun=2):
+    """
+    :param lianxun:
+    :return(min,max):
+    """
+    if(lianxun == 0):
+        return None
+
+    flag = os.path.exists("rb.sqlite3")
+    if(flag == False):
+        print("sqlite3 database doesn't exist")
+        os.sys.exit()
+
+    conn = sqlite3.connect("rb.sqlite3")
+    cur = conn.cursor()
+    table_name = "guilv1_red_%d" %lianxun
+    select_max_sql = ""
+    for i in range(1,34):
+        if(i == 33):
+            select_max_sql = select_max_sql + "max(rate_%d)" %i
+        else:
+            select_max_sql = select_max_sql + "max(rate_%d)," %i
+    select_min_sql = ""
+    for i in range(1,34):
+        if(i == 33):
+            select_min_sql = select_min_sql + "min(rate_%d)" %i
+        else:
+            select_min_sql = select_min_sql + "min(rate_%d)," %i
+    buf_select_max = cur.execute(
+                '''select %s from %s ''' %(select_max_sql,table_name)
+                )
+    max_ret = buf_select_max.fetchall()
+    buf_select_min = cur.execute(
+                '''select %s from %s ''' %(select_min_sql,table_name)
+                )
+    min_ret = buf_select_min.fetchall()
+    return (min_ret,max_ret)
+def get_redrate_lianxu_n_id(lianxun=2,id=1):
+    """
+    :param lianxun:
+    :param id:
+    :return:
+    """
+    if(lianxun == 0 or id == 0):
+        return None
+
+    flag = os.path.exists("rb.sqlite3")
+    if(flag == False):
+        print("sqlite3 database doesn't exist")
+        os.sys.exit()
+
+    conn = sqlite3.connect("rb.sqlite3")
+    cur = conn.cursor()
+    table_name = "guilv1_red_%d" %lianxun
+
+    buf_select = cur.execute(
+                '''select * from %s where id=%d''' %(table_name,id)
+                )
+    ret = buf_select.fetchall()
+    return ret
 #===============================================================================
 #a = search_2(n=-1)
 #for i in a:
@@ -334,5 +391,5 @@ def get_blue_2(buf=None,n=None,start=None,end=None):
 #print(a,b)
 #===============================================================================
 if(__name__ == '__main__'):
-    a = search_2()
+    a = get_redrate_lianxu_n_id(lianxun=1600)
     print(a)
