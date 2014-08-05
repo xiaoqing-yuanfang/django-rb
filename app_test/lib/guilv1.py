@@ -130,91 +130,8 @@ def guilv1_blue_init(items,file_name = None,table_name="guilv1_blue",lianxu_n=2)
         d[i] += 1
     d['num'] = len(items)
     return d
-from turtle import *
-def guilv1_blue_trend(items=None):
-    '''
-    items should be list
-    '''
-    if(items == None or len(items)<1):
-        print("blue data empty")
-        exit(1)
-    y_per = 30
-    x_per = 10 
-    speed(6)
-    penup()
-    setpos(-600,-300)
-    pendown()
-    left(90)
-    for i in range(17):
-        write(i)
-        dot(6,'red')
-        forward(y_per)
-    penup()
-    setpos(-600,-300)
-    right(90)
-    pendown()
-    for i in range(len(items)):
-        forward(x_per)
-        if(i == 0):
-            left(90)
-            forward(int(items[i])*y_per)
-            right(90)
-            continue
-        if(items[i] > items[i-1]):
-            left(90)
-            forward(int(items[i]-items[i-1])*y_per)
-            right(90)
-        elif(items[i] < items[i-1]):
-            right(90)
-            forward(int(items[i-1]-items[i])*y_per)
-            left(90)
-        else:
-            pass
-    mainloop()    
-def guilv1_blue_trend_2(items=None):
-    '''
-    items should be list
-    '''
-    if(items == None or len(items)<1):
-        print("blue data empty")
-        exit(1)
-    y_per = 30
-    x_per = 10 
-    speed(10)
-    penup()
-    setpos(-600,-300)
-    pendown()
-    left(90)
-    for i in range(17):
-        write(i)
-        dot(6,'red')
-        forward(y_per)
-    penup()
-    setpos(-600,-300)
-    right(90)
-    pendown()
-    angle = 0
-    length = 0
-    for i in range(len(items)):
-        if(i == 0):
-            angle = math.degrees(math.atan(int(items[i])*y_per/x_per))
-            left(angle)
-            forward((x_per**2+(int(items[i])*y_per)**2)**0.5)
-            right(angle)
-            continue
-        if(items[i] > items[i-1]):
-            angle = math.degrees(math.atan(int(items[i]-items[i-1])*y_per/x_per))
-            left(angle)
-            forward((x_per**2+(int(items[i]-items[i-1])*y_per)**2)**0.5)
-            right(angle)
-        elif(items[i] < items[i-1]):
-            angle = math.degrees(math.atan(int(items[i-1]-items[i])*y_per/x_per))
-            right(angle)
-            forward((x_per**2+(int(items[i-1]-items[i])*y_per)**2)**0.5)
-            left(angle)
-        else:
-            pass
-    mainloop()        
+
+
 def guilv1_blue_update(items,file_name = None,table_name="guilv1_blue"):
     pass    
 class guilv1_stat(object):
@@ -302,5 +219,3 @@ if __name__ == "__main__":
     blues = search.get_blue_2(buf=all_items)
     rates = guilv1_blue_init(blues)    
     blues = blues[:100]
-    guilv1_blue_trend_2(items=blues)                
-              
