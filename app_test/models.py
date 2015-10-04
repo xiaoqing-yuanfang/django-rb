@@ -20,3 +20,15 @@ class teacher(models.Model):
 class courese(models.Model):
     cou_id = models.IntegerField(primary_key=True)
     cou_name = models.CharField(max_length=100)
+
+class RbData(models.Model):
+    qishu = models.IntegerField(primary_key=True)
+    riqi = models.DateField()
+    r1 = models.IntegerField()
+    r2 = models.IntegerField()
+    r3 = models.IntegerField()
+    r4 = models.IntegerField()
+    r5 = models.IntegerField()
+    r6 = models.IntegerField()
+    b1 = models.IntegerField()
+

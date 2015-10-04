@@ -27,6 +27,8 @@ def from_and_to(table_name="rb"):
     
     list_result = cur.fetchall()
     list_len = len(list_result)
+    if(list_len==0):
+        return (0,0,0)
     period_from = int(list_result[0][1])
     period_to = int(list_result[list_len-1][1])
     

@@ -9,11 +9,14 @@ print(sys.path)
 from app_test.lib import guilv1
 from app_test.lib import search
 from app_test.lib import sqlite3_op
-from app_test import rb_sqlite
+import rb_sqlite
 if(__name__ == "__main__"):
-    #rb_sqlite.init_database()
+    rb_sqlite.init_database()
     #rb_sqlite.update_database()
     p_from,p_to,p_len = search.from_and_to(table_name="rb")
+    if(p_len==0):
+        print("error")
+        exit(1)
     all_items = search.search_3(periods_from=p_from,periods_to=p_to,table_name="rb") 
     reds = search.get_red_2(buf=all_items)
     for i in range(1569,p_len+1):

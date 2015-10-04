@@ -12,8 +12,9 @@ def init_database(default_dbname="rb.sqlite3"):
         print("create tabel failed")
         exit(1)
     data = []
-    for i in range(2003,2015,1):
+    for i in range(2003,2016,1):
         import time;time.sleep(1)
+
         tmp = get_rb_data.search_rb_items(i)
         if(tmp != None):
             tmp = get_rb_data.search_rb_item(tmp)

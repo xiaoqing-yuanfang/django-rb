@@ -11,6 +11,13 @@
             <td>{{ item }}</td>
         </tr>
     {% endfor %}
+    <form name="input" action="/rb/update_db" method="get">
+        <input type="submit" value="UpdateDB">
+    </form>
+        <form name="input" action="/rb/way1" method="get">
+        <input type="submit" value="Way1">
+    </form>
+    <h3><li> {{status}} </li></h3>
 </table>
 
 </body>
