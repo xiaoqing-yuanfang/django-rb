@@ -32,3 +32,8 @@ class RbData(models.Model):
     r6 = models.IntegerField()
     b1 = models.IntegerField()
 
+    def __str__(self):
+        '''
+        :return qishu temporaly:
+        '''
+        return str(self.qishu)
