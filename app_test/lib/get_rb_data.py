@@ -41,6 +41,7 @@ def search_rb_items(year):
 def get_rb_tuple(rb_item):
     '''
     return ['2003001','2003-02-23','10', '11', '12', '13', '26', '28', '11']
+    return incs ordered reds
     or []
     :param rb_item:
     :return:
@@ -60,6 +61,7 @@ def get_rb_tuple(rb_item):
     res = format_reds_blues.findall(rb_item)
     if(res):
         if DEBUG: print(res)
+        res = sorted(res[0:6])+res[6:]
         r=r+res
         while(len(r)>9):
             r.pop()
