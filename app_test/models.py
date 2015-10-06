@@ -37,3 +37,46 @@ class RbData(models.Model):
         :return qishu temporaly:
         '''
         return str(self.qishu)
+
+class RData(models.Model):
+    qishu = models.IntegerField(primary_key=True)
+    riqi = models.DateField()
+    r1 = models.IntegerField(default=0)
+    r2 = models.IntegerField(default=0)
+    r3 = models.IntegerField(default=0)
+    r4 = models.IntegerField(default=0)
+    r5 = models.IntegerField(default=0)
+    r6 = models.IntegerField(default=0)
+    r7 = models.IntegerField(default=0)
+    r8 = models.IntegerField(default=0)
+    r9 = models.IntegerField(default=0)
+    r10 = models.IntegerField(default=0)
+    r11 = models.IntegerField(default=0)
+    r12 = models.IntegerField(default=0)
+    r13 = models.IntegerField(default=0)
+    r14 = models.IntegerField(default=0)
+    r15 = models.IntegerField(default=0)
+    r16 = models.IntegerField(default=0)
+    r17 = models.IntegerField(default=0)
+    r18 = models.IntegerField(default=0)
+    r19 = models.IntegerField(default=0)
+    r20 = models.IntegerField(default=0)
+    r21 = models.IntegerField(default=0)
+    r22 = models.IntegerField(default=0)
+    r23 = models.IntegerField(default=0)
+    r24 = models.IntegerField(default=0)
+    r25 = models.IntegerField(default=0)
+    r26 = models.IntegerField(default=0)
+    r27 = models.IntegerField(default=0)
+    r28 = models.IntegerField(default=0)
+    r29 = models.IntegerField(default=0)
+    r30 = models.IntegerField(default=0)
+    r31 = models.IntegerField(default=0)
+    r32 = models.IntegerField(default=0)
+    r33 = models.IntegerField(default=0)
+
+    def __str__(self):
+        '''
+        :return qishu temporaly:
+        '''
+        return str(self.qishu)
