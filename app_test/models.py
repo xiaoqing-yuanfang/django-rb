@@ -79,4 +79,31 @@ class RData(models.Model):
         '''
         :return qishu temporaly:
         '''
-        return str(self.qishu)
+        return str(self.qishu+" R")
+
+class BData(models.Model):
+    qishu = models.IntegerField(primary_key=True)
+    riqi = models.DateField()
+    b1 = models.IntegerField(default=0)
+    b2 = models.IntegerField(default=0)
+    b3 = models.IntegerField(default=0)
+    b4 = models.IntegerField(default=0)
+    b5 = models.IntegerField(default=0)
+    b6 = models.IntegerField(default=0)
+    b7 = models.IntegerField(default=0)
+    b8 = models.IntegerField(default=0)
+    b9 = models.IntegerField(default=0)
+    b10 = models.IntegerField(default=0)
+    b11 = models.IntegerField(default=0)
+    b12 = models.IntegerField(default=0)
+    b13 = models.IntegerField(default=0)
+    b14 = models.IntegerField(default=0)
+    b15 = models.IntegerField(default=0)
+    b16 = models.IntegerField(default=0)
+
+
+    def __str__(self):
+        '''
+        :return qishu temporaly:
+        '''
+        return str(self.qishu+" B")

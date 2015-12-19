@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{predict_way}}</title>
+</head>
+<body>
+<a href="./">back to main rb</a>
+<table border="1">
+    {% for item in items %}
+        <tr>
+            {% for j in item %}
+            <td>{{ j }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

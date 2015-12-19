@@ -9,6 +9,7 @@ from django.shortcuts import render_to_response
 from models import students
 from models import RbData
 from models import RData
+from models import BData
 from lib.get_rb_data import  get_rb_tuples
 from lib.get_rb_data import MIN_YEAR_RB
 from lib.lib_wayone import WayOne
@@ -97,11 +98,13 @@ def view_update_database(request):
             item_db.save()
     status = "update OK,Using %f seconds" %(time.time()-now)
     update_r_data()
+    update_b_data()
     #return HttpResponse("update OK,Using %d seconds" %(time.time()-now))
     return render_to_response("app_test/app_test.html",{'status':status})
 def view_predict_way1(request):
-    items = WayOne.getdata()
-    return render_to_response("app_test/app_test.html",{'items':items})
+    items = WayOne.get_r_data()
+    return render_to_response("app_test/show_result.html",
+                              {"predict_way":"way_1",'items':items})
 
 def update_r_data():
     for line in RbData.objects.all():
@@ -129,3 +132,18 @@ def update_r_data():
                            r29=d[29],r30=d[30],r31=d[31],r32=d[32],r33=d[33])
         item_rdata.save()
     print("table rdata update OK")
+
+def update_b_data():
+    for line in RbData.objects.all():
+        d = {}
+        for i in range(1,17):
+            tmp ={i:0}
+            d.update(tmp)
+        d[line.b1] = 1
+
+        item_bdata = BData(qishu=line.qishu,riqi=line.riqi,b1=d[1],b2=d[2],
+                           b3=d[3],b4=d[4],b5=d[5],b6=d[6],b7=d[7],b8=d[8],
+                           b9=d[9],b10=d[10],b11=d[11],b12=d[12],b13=d[13],
+                           b14=d[14],b15=d[15],b16=d[16])
+        item_bdata.save()
+    print("table bdata update OK")

@@ -29,3 +29,11 @@ class WayOne(object):
             data.append([item.qishu,item.riqi.__str__(),item.r1,item.r2,item.r3,
                         item.r4,item.r5,item.r6,item.b1])
         return tuple(data)
+
+    @staticmethod
+    def get_r_data():
+        return [[1,2,3,4,5,6],[2,3,4,5,6,7]]
+
+    @staticmethod
+    def get_b_data():
+        return [[7],[8]]
